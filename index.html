@@ -4,19 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stopwatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Stopwatch</h1>
-    <div id="display" class="display">00:00:00.<span id="ms">00</span></div>
-    <div class="buttons">
-      <button id="startBtn" class="btn start">スタート</button>
-      <button id="stopBtn" class="btn stop" disabled>ストップ</button>
-      <button id="lapBtn" class="btn lap" disabled>ラップ</button>
-      <button id="resetBtn" class="btn reset" disabled>リセット</button>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-grid"></div>
+
+  <main class="container" id="container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">STOPWATCH</span>
+      </div>
+      <div class="status" id="status">
+        <span class="status-dot"></span>
+        <span class="status-text">READY</span>
+      </div>
+    </header>
+
+    <div class="display-wrap">
+      <div id="display" class="display">
+        <span class="seg" id="seg-h">00</span><span class="colon">:</span><span class="seg" id="seg-m">00</span><span class="colon">:</span><span class="seg" id="seg-s">00</span><span class="dot">.</span><span class="seg seg-ms" id="seg-ms">00</span>
+      </div>
+      <div class="display-glow"></div>
     </div>
-    <ol id="laps" class="laps"></ol>
+
+    <div class="buttons">
+      <button id="startBtn" class="btn btn-primary" aria-label="Start">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span>START</span>
+      </button>
+      <button id="stopBtn" class="btn btn-danger" aria-label="Stop" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+        <span>STOP</span>
+      </button>
+      <button id="lapBtn" class="btn btn-ghost" aria-label="Lap" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0-10-10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>LAP</span>
+      </button>
+      <button id="resetBtn" class="btn btn-ghost" aria-label="Reset" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg>
+        <span>RESET</span>
+      </button>
+    </div>
+
+    <div class="laps-wrap">
+      <div class="laps-header" id="lapsHeader" hidden>
+        <span>LAPS</span>
+        <span id="lapsCount">0</span>
+      </div>
+      <ol id="laps" class="laps"></ol>
+    </div>
+
+    <footer class="hint">
+      <kbd>Space</kbd> Start/Stop · <kbd>L</kbd> Lap · <kbd>R</kbd> Reset
+    </footer>
   </main>
   <script src="script.js"></script>
 </body>
